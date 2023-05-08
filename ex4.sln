@@ -1,25 +1,80 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.5.33424.131
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ex4", "ex4\ex4.csproj", "{4F52F019-276B-4EF4-B7D7-541CB2EF64B5}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4F52F019-276B-4EF4-B7D7-541CB2EF64B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4F52F019-276B-4EF4-B7D7-541CB2EF64B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4F52F019-276B-4EF4-B7D7-541CB2EF64B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4F52F019-276B-4EF4-B7D7-541CB2EF64B5}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {FD2D7747-F9FD-46F9-820B-6A9DD908E2AB}
-	EndGlobalSection
-EndGlobal
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Declaração da matriz de caracteres de dimensão 10x10
+        char[,] matriz = new char[10, 10];
+
+        // Loop para ler os pares de valores i e j e armazenar o valor X na matriz
+        for (int k = 0; k < 10; k++)
+        {
+            Console.WriteLine("Informe o valor de i e j (separados por espaço):");
+            string[] valores = Console.ReadLine().Split(' ');
+            int i = int.Parse(valores[0]) - 1;
+            int j = int.Parse(valores[1]) - 1;
+            matriz[i, j] = 'X';
+        }
+
+        // Loop para calcular a quantidade de vizinhos em cada posição da matriz
+        for (int i = 0; i < 10; i++)
+        {
+            for (int j = 0; j < 10; j++)
+            {
+                if (matriz[i, j] == '\0') // Se a posição não contém o valor X
+                {
+                    int qtdVizinhos = 0;
+                    if (i > 0 && matriz[i - 1, j] == 'X') // Vizinho acima
+                    {
+                        qtdVizinhos++;
+                    }
+                    if (i < 9 && matriz[i + 1, j] == 'X') // Vizinho abaixo
+                    {
+                        qtdVizinhos++;
+                    }
+                    if (j > 0 && matriz[i, j - 1] == 'X') // Vizinho à esquerda
+                    {
+                        qtdVizinhos++;
+                    }
+                    if (j < 9 && matriz[i, j + 1] == 'X') // Vizinho à direita
+                    {
+                        qtdVizinhos++;
+                    }
+                    if (i > 0 && j > 0 && matriz[i - 1, j - 1] == 'X') // Vizinho superior esquerdo
+                    {
+                        qtdVizinhos++;
+                    }
+                    if (i > 0 && j < 9 && matriz[i - 1, j + 1] == 'X') // Vizinho superior direito
+                    {
+                        qtdVizinhos++;
+                    }
+                    if (i < 9 && j > 0 && matriz[i + 1, j - 1] == 'X') // Vizinho inferior esquerdo
+                    {
+                        qtdVizinhos++;
+                    }
+                    if (i < 9 && j < 9 && matriz[i + 1, j + 1] == 'X') // Vizinho inferior direito
+                    {
+                        qtdVizinhos++;
+                    }
+                    if (qtdVizinhos > 0) // Se a posição tem pelo menos um vizinho
+                    {
+                        Console.Write(qtdVizinhos);
+                    }
+                    else // Se a posição não tem vizinho
+                    {
+                        Console.Write(" ");
+                    }
+                }
+                else // Se a posição contém o valor X
+                {
+                    Console.Write(matriz[i, j]);
+                }
+                Console.Write(" ");
+            }
+            Console.WriteLine();
+        }
+
+        Console.ReadLine();
+    }
+}
