@@ -1,25 +1,43 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.5.33424.131
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "exMatriz1", "exMatriz1\exMatriz1.csproj", "{39187435-432C-47B3-B6A8-188979992E6F}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{39187435-432C-47B3-B6A8-188979992E6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{39187435-432C-47B3-B6A8-188979992E6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{39187435-432C-47B3-B6A8-188979992E6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{39187435-432C-47B3-B6A8-188979992E6F}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {A8FDB994-EA3B-4FD6-A4C0-9884E6302DCD}
-	EndGlobalSection
-EndGlobal
+using System;
+namespace matrizes1
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            int [,] mSoma = somarMatrizes( new int[,] { { 1,1}, {1, 1} });
+        }
+        public static int somarMatrizes(int[,] ma, int[,] mb)
+        {
+            
+            
+            if( (ma.GetLength(0) != mb.GetLength(0)) && (ma.GetLength(1) != mb.GetLength(1))
+                return null;
+
+            int[,] mResultado = new int[ma.GetLength(0), ma.GetLength(1)];
+
+            for (int l = 0; l < 3; l++)
+            {
+                for (int c = 0; c < 3; c++)
+                {
+                    matrixR[l, c] = matrixA[l, c] + matrixB[l, c];
+                }
+            }
+
+
+
+            for (int l = 0; l < 3; l++)
+            {
+                Console.WriteLine();
+                Console.Write("");
+
+                for (int c = 0; c < 3; c++)
+                {
+                    Console.Write(matrixR[l, c] + "-");
+                }
+            }
+        }
+
+
+    }
+}
